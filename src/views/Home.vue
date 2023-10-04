@@ -45,7 +45,7 @@ function defineSede(value) {
           @define:sedeSeleccionada="defineSede"
         />
       </v-col>
-      <v-col :cols="12" :sm="12" :md="7" :lg="8">
+      <v-col :cols="12" :sm="12" :md="7" :lg="5">
         <previewFirma
           :fullname="oneWhite.colaborador"
           :cargo="oneWhite.rol"

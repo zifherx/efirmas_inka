@@ -5,18 +5,23 @@ import { ref, computed } from "vue";
 const listaSedes = ref([
   {
     name: "Chiclayo",
-    sede: "Chiclayo",
-    direccion: "Av. Panamericana Norte N° 4200 - Chiclayo",
+    sede: "Chiclayo (CC Boulevard)",
+    direccion: "C.C. Boulevard: Av. Mariscal Nieto N°480- Chiclayo",
   },
   {
-    name: "Corporativo",
-    sede: "Corporativo",
-    direccion: "Av. Ayacucho 126, Sgo de Surco - Lima",
+    name: "Chiclayo",
+    sede: "Chiclayo (Principal)",
+    direccion: "Av. Panamericana N° 4200 - Ex fundo iris - Chiclayo",
   },
   {
     name: "Lima",
-    sede: "Lima",
-    direccion: "Av. Ayacucho 126, Sgo de Surco - Lima",
+    sede: "Lima (Surco)",
+    direccion: "Av. Ayacucho N°126 – Surco - Surco",
+  },
+  {
+    name: "Lima",
+    sede: "Lima (Surquillo)",
+    direccion: "Av. Angamos N°1669 - Surquillo",
   },
   {
     name: "Trujillo",
@@ -91,7 +96,12 @@ const emitValues = defineEmits([
   <v-container>
     <v-row>
       <v-col :cols="12">
-        <v-card max-width="800px" :elevation="1" variant="flat">
+        <v-card
+          max-width="800px"
+          class="bg-grey-lighten-2"
+          :elevation="1"
+          variant="flat"
+        >
           <v-card-item class="bg-primary white--text">
             <v-card-title>
               <v-icon
@@ -125,6 +135,9 @@ const emitValues = defineEmits([
                           required
                           hide-details
                           density="compact"
+                          variant="outlined"
+                          rounded
+                          bg-color="white"
                         ></v-text-field>
                       </v-col>
                       <v-col :cols="12">
@@ -137,8 +150,10 @@ const emitValues = defineEmits([
                           required
                           hide-details
                           density="compact"
+                          variant="outlined"
+                          rounded
+                          bg-color="white"
                         ></v-text-field>
-                        <!-- variant="outlined" -->
                       </v-col>
                       <v-col :cols="12">
                         <v-text-field
@@ -150,6 +165,9 @@ const emitValues = defineEmits([
                           required
                           hide-details
                           density="compact"
+                          variant="outlined"
+                          rounded
+                          bg-color="white"
                         ></v-text-field>
                       </v-col>
                       <v-col :cols="12">
@@ -161,13 +179,16 @@ const emitValues = defineEmits([
                           required
                           hide-details
                           density="compact"
+                          variant="outlined"
+                          rounded
+                          bg-color="white"
                         ></v-text-field>
                       </v-col>
                       <v-col :cols="12">
                         <v-select
                           v-model="sedeSeleccionada"
                           :items="listaSedes"
-                          item-title="name"
+                          item-title="sede"
                           item-value="direccion"
                           placeholder="Seleccione su sede"
                           prepend-inner-icon="mdi-map-marker"
@@ -175,6 +196,9 @@ const emitValues = defineEmits([
                           density="compact"
                           required
                           hide-details
+                          variant="outlined"
+                          rounded
+                          bg-color="white"
                         >
                         </v-select>
                       </v-col>

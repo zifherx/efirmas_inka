@@ -6,7 +6,7 @@ import AppBar from "../components/AppBar.vue";
   <v-app>
     <!-- <v-layout class="rounded rounde-md"> -->
     <AppBar />
-    <v-main>
+    <v-main class="bg-grey-lighten-2">
       <router-view />
     </v-main>
     <!-- </v-layout> -->
