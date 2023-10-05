@@ -97,13 +97,13 @@ const emitValues = defineEmits([
     <v-row>
       <v-col :cols="12">
         <v-card
-          max-width="800px"
+          max-width="700px"
           class="bg-grey-lighten-2"
           :elevation="1"
           variant="flat"
         >
-          <v-card-item class="bg-primary white--text">
-            <v-card-title>
+          <v-card-item class="bg-primary">
+            <v-card-title class="text-h6 text-uppercase">
               <v-icon
                 icon="mdi-fire-circle"
                 size="small"
@@ -112,12 +112,14 @@ const emitValues = defineEmits([
               ></v-icon>
               ¡Bienvenidos a la empresa!
             </v-card-title>
-            <v-card-subtitle class="ml-10">
-              <span>
+            <v-card-text
+              class="mx-0 text-justify text-grey-lighten-1 text-caption"
+            >
+              <p>
                 A continuación, por favor, ingresa tus datos corporativos para
                 el llenado de tu firma digital.
-              </span>
-            </v-card-subtitle>
+              </p>
+            </v-card-text>
           </v-card-item>
 
           <v-card-text>
