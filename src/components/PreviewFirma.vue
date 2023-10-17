@@ -1,8 +1,9 @@
 <script setup>
 import { ref } from "vue";
-import * as htmlToImage from "html-to-image";
 import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
 import { saveAs } from "file-saver";
+
+// const logoNissan = ref("src/assets/logo_nissan_black.png");
 
 const propsFirma = defineProps({
   fullname: { type: String, default: "Nombre Completo" },
@@ -12,8 +13,8 @@ const propsFirma = defineProps({
   direccion: { type: String, default: "Dirección" },
 });
 
-const logo_autoMotoresInka = ref("src/assets/logo_automotoresInka.png");
-const logo_inkalider = ref("src/assets/logo_inkalider.png");
+// const logo_autoMotoresInka = ref("src/assets/logo_automotoresInka.png");
+// const logo_inkalider = ref("src/assets/logo_inkalider.png");
 
 function getSede(cadenas) {
   const sede = cadenas.split("-")[1];
@@ -21,17 +22,6 @@ function getSede(cadenas) {
 }
 
 function downloadFirma() {
-  // alert("Tu mama");
-  // toBlob(document.getElementById("mi-firma")).then(function (blob) {
-  //   if (window.saveAs) {
-  //     window.saveAs(
-  //       blob,
-  //       `eFirma_${propsFirma.fullname}_${new Date().getTime()}.png`
-  //     );
-  //   } else {
-  //     saveAs(blob, `eFirma_${propsFirma.fullname}_${new Date().getTime()}.png`);
-  //   }
-  // });
   document.getElementById("mi-firma").style.backgroundColor = "#fff";
   toPng(document.getElementById("mi-firma")).then(function (dataUrl) {
     saveAs(
@@ -45,7 +35,7 @@ function downloadFirma() {
 <template>
   <v-container>
     <v-row>
-      <v-col :cols="12">
+      <v-col :cols="12" :sm="12" :md="12" :lg="12">
         <v-card variant="flat" :elevation="1">
           <v-card-item class="bg-primary text-white">
             <div class="d-flex flex-row">
@@ -76,7 +66,7 @@ function downloadFirma() {
           <v-card-text id="mi-firma">
             <div class="mt-5">
               <v-row>
-                <v-col :cols="12">
+                <v-col :cols="12" :sm="12" :md="12" :lg="12">
                   <p class="font-text-semibold">
                     {{
                       propsFirma.fullname === ""
@@ -106,29 +96,34 @@ function downloadFirma() {
                     }}
                   </p>
                 </v-col>
+                <v-col v-show="false" :cols="12" :sm="2" :md="2" :lg="2" class="mx-auto my-auto">
+                  <v-img
+                    src="@/assets/logo-nissan-black.png"
+                    lazy-src="@/assets/logo-nissan-black.png"
+                    :width="100"
+                  />
+                  <!-- max-width="90"
+                    height="60" -->
+                </v-col>
                 <v-divider />
                 <v-col :cols="9"></v-col>
                 <v-spacer />
                 <v-col :cols="3" class="my-0">
                   <v-img
+                    v-if="getSede(propsFirma.direccion) === 'Trujillo'"
                     class="align-self-end alineacion"
-                    :cover="
-                      getSede(propsFirma.direccion) === 'Trujillo'
-                        ? true
-                        : false
-                    "
+                    cover
                     :max-height="150"
                     :height="50"
-                    :src="
-                      getSede(propsFirma.direccion) === 'Trujillo'
-                        ? logo_inkalider
-                        : logo_autoMotoresInka
-                    "
-                    :lazy-src="
-                      getSede(propsFirma.direccion) === 'Trujillo'
-                        ? logo_inkalider
-                        : logo_autoMotoresInka
-                    "
+                    src="@/assets/logo-inkalider.png"
+                    lazy-src="@/assets/logo-inkalider.png"
+                  ></v-img>
+                  <v-img v-else
+                    class="align-self-end alineacion"
+                    :max-height="150"
+                    :height="50"
+                    src="@/assets/logo-automotoresInka.png"
+                    lazy-src="@/assets/logo-automotoresInka.png"
                   ></v-img>
                 </v-col>
               </v-row>
@@ -164,4 +159,5 @@ function downloadFirma() {
 .alineacion {
   margin-top: -15px;
 }
+
 </style>

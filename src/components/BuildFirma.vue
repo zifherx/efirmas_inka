@@ -97,8 +97,8 @@ const emitValues = defineEmits([
     <v-row>
       <v-col :cols="12">
         <v-card
-          max-width="700px"
-          class="bg-grey-lighten-2"
+          max-width="750px"
+          class="bg-grey-lighten-2 mx-auto"
           :elevation="1"
           variant="flat"
         >

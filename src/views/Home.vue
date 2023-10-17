@@ -1,7 +1,15 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import buildFirma from "@/components/BuildFirma.vue";
 import previewFirma from "@/components/PreviewFirma.vue";
+import { useDisplay } from "vuetify";
+
+const { mobile, sm } = useDisplay();
+
+// onMounted(() => {
+//   console.log(sm.value); // 960
+//   console.log(mobile.value); // true
+// });
 
 const oneWhite = ref({
   colaborador: "",
@@ -31,7 +39,12 @@ function defineSede(value) {
 <template>
   <div>
     <v-row>
-      <v-col :cols="12" :sm="12" :md="5" :lg="4">
+      <v-col
+        :cols="12"
+        :sm="12"
+        :md="5"
+        :lg="4"
+      >
         <buildFirma
           :fullname="oneWhite.colaborador"
           :cargo="oneWhite.rol"
@@ -45,7 +58,7 @@ function defineSede(value) {
           @define:sedeSeleccionada="defineSede"
         />
       </v-col>
-      <v-col :cols="12" :sm="12" :md="7" :lg="5">
+      <v-col :cols="12" :sm="12" :md="7" :lg="6">
         <previewFirma
           :fullname="oneWhite.colaborador"
           :cargo="oneWhite.rol"

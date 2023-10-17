@@ -5,6 +5,7 @@ import { fileURLToPath, URL } from "node:url";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/' : '/',
   plugins: [
     vue({
       template: { transformAssetUrls },
@@ -20,4 +21,24 @@ export default defineConfig({
     },
     extensions: [".js", ".json", ".jsx", ".mjs", ".ts", ".tsx", ".vue"],
   },
+
+  build: {
+    rollupOptions: {
+      output: {
+        chunkFileNames: "assets/js/[name].js",
+        entryFileNames: "assets/js/[name].js",
+        assetFileNames: ({ name }) => {
+          if (/\.(gif|jpe?g|png|svg)$/.test(name ?? "")) {
+            return "assets/images/[name][extname]";
+          }
+          if (/\.css$/.test(name ?? "")) {
+            return "assets/css/[name][extname]";
+          }
+          return "assets/[name][extname]";
+        },
+      },
+    },
+  },
+
+  preview: 8080
 });
